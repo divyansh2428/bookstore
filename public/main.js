@@ -96,7 +96,7 @@ var AdditemComponent = /** @class */ (function () {
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]()
             .set('Authorization', 'my-auth-token')
             .set('Content-Type', 'application/json');
-        this.http.post("/getName", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
+        this.http.post("http://localhost:2000/getName", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
             _this.user_name = data["name"];
         });
     };
@@ -129,7 +129,7 @@ var AdditemComponent = /** @class */ (function () {
             var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]()
                 .set('Authorization', 'my-auth-token')
                 .set('Content-Type', 'application/json');
-            this.http.post("/addItem", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
+            this.http.post("http://localhost:2000/addItem", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
             });
             console.log("Item added");
             alert("Item added");
@@ -242,6 +242,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wishlist_wishlist_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./wishlist/wishlist.component */ "./src/app/wishlist/wishlist.component.ts");
 /* harmony import */ var _yourlistings_yourlistings_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./yourlistings/yourlistings.component */ "./src/app/yourlistings/yourlistings.component.ts");
 /* harmony import */ var _messages_messages_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./messages/messages.component */ "./src/app/messages/messages.component.ts");
+/* harmony import */ var _message_message_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./message/message.component */ "./src/app/message/message.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -253,6 +254,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
  // <-- NgModel lives here
+
 
 
 
@@ -324,7 +326,8 @@ var AppModule = /** @class */ (function () {
                 _description_description_component__WEBPACK_IMPORTED_MODULE_12__["DescriptionComponent"],
                 _wishlist_wishlist_component__WEBPACK_IMPORTED_MODULE_13__["WishlistComponent"],
                 _yourlistings_yourlistings_component__WEBPACK_IMPORTED_MODULE_14__["YourlistingsComponent"],
-                _messages_messages_component__WEBPACK_IMPORTED_MODULE_15__["MessagesComponent"]
+                _messages_messages_component__WEBPACK_IMPORTED_MODULE_15__["MessagesComponent"],
+                _message_message_component__WEBPACK_IMPORTED_MODULE_16__["MessageComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -409,7 +412,7 @@ var DescriptionComponent = /** @class */ (function () {
             .set('Content-Type', 'application/json');
         var object = { token: localStorage.getItem("token") };
         if (localStorage.getItem("token") != "") {
-            this.http.post("/getName", JSON.stringify(object), { headers: headers }).subscribe(function (data) {
+            this.http.post("http://localhost:2000/getName", JSON.stringify(object), { headers: headers }).subscribe(function (data) {
                 _this.user_id = data['user_id'];
                 _this.name = data['name'];
                 console.log("Iffggfd is " + _this.user_id);
@@ -425,13 +428,13 @@ var DescriptionComponent = /** @class */ (function () {
         headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]()
             .set('Authorization', 'my-auth-token')
             .set('Content-Type', 'application/json');
-        this.http.post("/getItem", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
+        this.http.post("http://localhost:2000/getItem", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
             _this.item = data['item'];
             headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]()
                 .set('Authorization', 'my-auth-token')
                 .set('Content-Type', 'application/json');
             var p = { name: _this.item.seller };
-            _this.http.post("/id", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
+            _this.http.post("http://localhost:2000/id", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
                 _this.seller_id = data["id"];
                 console.log("Isa" + _this.seller_id);
             });
@@ -450,7 +453,7 @@ var DescriptionComponent = /** @class */ (function () {
             var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]()
                 .set('Authorization', 'my-auth-token')
                 .set('Content-Type', 'application/json');
-            this.http.post("/wishlist", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
+            this.http.post("http://localhost:2000/wishlist", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
             });
             this.router.navigate(['/wishlist']);
         }
@@ -465,7 +468,7 @@ var DescriptionComponent = /** @class */ (function () {
                 .set('Authorization', 'my-auth-token')
                 .set('Content-Type', 'application/json');
             var p = { user_id: this.user_id, seller_id: this.seller_id, message: this.message, sname: this.name, rname: this.item.seller, product_id: id, book_name: bookname, url: path };
-            this.http.post("/sendMessage", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
+            this.http.post("http://localhost:2000/sendMessage", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
             });
             this.router.navigate(['/messages']);
         }
@@ -563,7 +566,7 @@ var HeaderComponent = /** @class */ (function () {
                 var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]()
                     .set('Authorization', 'my-auth-token')
                     .set('Content-Type', 'application/json');
-                _this.http.post("/getName", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
+                _this.http.post("http://localhost:2000/getName", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
                     _this.name = data["name"];
                 });
             }
@@ -665,7 +668,7 @@ var ListingsComponent = /** @class */ (function () {
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]()
             .set('Authorization', 'my-auth-token')
             .set('Content-Type', 'application/json');
-        this.http.get("/getListings", { headers: headers }).subscribe(function (data) {
+        this.http.get("http://localhost:2000/getListings", { headers: headers }).subscribe(function (data) {
             _this.listings = data['listings'];
             _this.slistings = _this.listings;
         });
@@ -676,7 +679,7 @@ var ListingsComponent = /** @class */ (function () {
             var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]()
                 .set('Authorization', 'my-auth-token')
                 .set('Content-Type', 'application/json');
-            this.http.get("/getListings/lh", { headers: headers }).subscribe(function (data) {
+            this.http.get("http://localhost:2000/getListings/lh", { headers: headers }).subscribe(function (data) {
                 _this.listings = data['listings'];
             });
         }
@@ -684,7 +687,7 @@ var ListingsComponent = /** @class */ (function () {
             var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]()
                 .set('Authorization', 'my-auth-token')
                 .set('Content-Type', 'application/json');
-            this.http.get("/getListings/hl", { headers: headers }).subscribe(function (data) {
+            this.http.get("http://localhost:2000/getListings/hl", { headers: headers }).subscribe(function (data) {
                 _this.listings = data['listings'];
             });
         }
@@ -692,7 +695,7 @@ var ListingsComponent = /** @class */ (function () {
             var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]()
                 .set('Authorization', 'my-auth-token')
                 .set('Content-Type', 'application/json');
-            this.http.get("/getListings/cn", { headers: headers }).subscribe(function (data) {
+            this.http.get("http://localhost:2000/getListings/cn", { headers: headers }).subscribe(function (data) {
                 _this.listings = data['listings'];
             });
         }
@@ -705,7 +708,7 @@ var ListingsComponent = /** @class */ (function () {
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]()
             .set('Authorization', 'my-auth-token')
             .set('Content-Type', 'application/json');
-        this.http.post("/getPriceListings", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
+        this.http.post("http://localhost:2000/getPriceListings", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
             if (data['working'] == false) {
                 alert("No books according to this filter");
                 _this.show = true;
@@ -724,7 +727,7 @@ var ListingsComponent = /** @class */ (function () {
             .set('Authorization', 'my-auth-token')
             .set('Content-Type', 'application/json');
         var object = { token: localStorage.getItem("token") };
-        this.http.post("/getName", JSON.stringify(object), { headers: headers }).subscribe(function (data) {
+        this.http.post("http://localhost:2000/getName", JSON.stringify(object), { headers: headers }).subscribe(function (data) {
             _this.user_id = data['user_id'];
             console.log("Id is " + _this.user_id);
             console.log(_this.user_id);
@@ -734,7 +737,7 @@ var ListingsComponent = /** @class */ (function () {
                 headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]()
                     .set('Authorization', 'my-auth-token')
                     .set('Content-Type', 'application/json');
-                _this.http.post("/wishlist", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
+                _this.http.post("http://localhost:2000/wishlist", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
                     _this.router.navigate(['/wishlist']);
                 });
                 _this.router.navigate(['/wishlist']);
@@ -984,7 +987,7 @@ var LoginComponent = /** @class */ (function () {
                 .set('Content-Type', 'application/json');
             var p = { email: this.email, password: this.password };
             console.log(JSON.stringify(p));
-            this.http.post("/login", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
+            this.http.post("http://localhost:2000/login", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
                 if (data["token"] == "") {
                     _this.error += 'No Record Found';
                     var v_1 = document.getElementsByClassName('error');
@@ -1025,6 +1028,118 @@ var LoginComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"], _request_service__WEBPACK_IMPORTED_MODULE_2__["RequestService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], LoginComponent);
     return LoginComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/message/message.component.css":
+/*!***********************************************!*\
+  !*** ./src/app/message/message.component.css ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "div.ex1 {\r\n    background-color: lightblue;\r\n    width: 100%;\r\n    height: 400px;\r\n    overflow: scroll;\r\n}\r\n"
+
+/***/ }),
+
+/***/ "./src/app/message/message.component.html":
+/*!************************************************!*\
+  !*** ./src/app/message/message.component.html ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/message/message.component.ts":
+/*!**********************************************!*\
+  !*** ./src/app/message/message.component.ts ***!
+  \**********************************************/
+/*! exports provided: MessageComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MessageComponent", function() { return MessageComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _request_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../request.service */ "./src/app/request.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var MessageComponent = /** @class */ (function () {
+    function MessageComponent(http, request, router) {
+        this.http = http;
+        this.request = request;
+        this.router = router;
+        this.nameArray = [];
+        this.arr = [];
+    }
+    MessageComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]()
+            .set('Authorization', 'my-auth-token')
+            .set('Content-Type', 'application/json');
+        var object = { token: localStorage.getItem("token") };
+        this.http.post("http://localhost:2000/getName", JSON.stringify(object), { headers: headers }).subscribe(function (data) {
+            _this.user_id = data['user_id'];
+            _this.name = data["name"];
+            var p = { user_id: _this.user_id };
+            _this.http.post("http://localhost:2000/getDistinctName", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
+                _this.names = data["names"];
+                for (var i = 0; i < _this.names.length; i++)
+                    _this.nameArray.push(_this.names[i].reciever_name);
+                _this.http.post("http://localhost:2000/getDisName", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
+                    _this.names = data["names"];
+                    for (var i = 0; i < _this.names.length; i++)
+                        _this.nameArray.push(_this.names[i].sender_name);
+                    console.log(_this.nameArray);
+                    _this.nameArray = _this.nameArray.filter(function (x, i, a) { return a.indexOf(x) == i; });
+                    console.log(_this.nameArray);
+                    for (i = 0; i < _this.nameArray.length; i++)
+                        _this.arr.push({ name: _this.nameArray[i] });
+                    console.log(_this.arr);
+                });
+            });
+        });
+    };
+    MessageComponent.prototype.find = function (names) {
+        var _this = this;
+        console.log(name);
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]()
+            .set('Authorization', 'my-auth-token')
+            .set('Content-Type', 'application/json');
+        var object = { name: names };
+        this.http.post("http://localhost:2000/callMessages", JSON.stringify(object), { headers: headers }).subscribe(function (data) {
+            _this.cmessage = data["message"];
+            console.log(_this.cmessage);
+        });
+    };
+    MessageComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-message',
+            template: __webpack_require__(/*! ./message.component.html */ "./src/app/message/message.component.html"),
+            styles: [__webpack_require__(/*! ./message.component.css */ "./src/app/message/message.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"], _request_service__WEBPACK_IMPORTED_MODULE_2__["RequestService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
+    ], MessageComponent);
+    return MessageComponent;
 }());
 
 
@@ -1112,7 +1227,7 @@ var MessagesComponent = /** @class */ (function () {
                     .set('Authorization', 'my-auth-token')
                     .set('Content-Type', 'application/json');
                 var object = { sname: _this.name, rname: rename, message: _this.message, seller_id: reciever_id, user_id: _this.user_id, product_id: id, book_name: bookname, url: "" };
-                _this.http.post("/sendMessage", JSON.stringify(object), { headers: headers }).subscribe(function (data) {
+                _this.http.post("http://localhost:2000/sendMessage", JSON.stringify(object), { headers: headers }).subscribe(function (data) {
                     _this.received = false;
                 });
             }
@@ -1124,7 +1239,7 @@ var MessagesComponent = /** @class */ (function () {
             .set('Authorization', 'my-auth-token')
             .set('Content-Type', 'application/json');
         var object = { token: localStorage.getItem("token") };
-        this.http.post("/getName", JSON.stringify(object), { headers: headers }).subscribe(function (data) {
+        this.http.post("http://localhost:2000/getName", JSON.stringify(object), { headers: headers }).subscribe(function (data) {
             _this.user_id = data['user_id'];
             _this.name = data["name"];
             console.log(_this.user_id);
@@ -1132,7 +1247,7 @@ var MessagesComponent = /** @class */ (function () {
                 .set('Authorization', 'my-auth-token')
                 .set('Content-Type', 'application/json');
             var object = { id: _this.user_id };
-            _this.http.post("/recievedMessages", JSON.stringify(object), { headers: headers }).subscribe(function (data) {
+            _this.http.post("http://localhost:2000/recievedMessages", JSON.stringify(object), { headers: headers }).subscribe(function (data) {
                 _this.messages = data["messages"];
                 console.log(_this.messages);
             });
@@ -1148,7 +1263,7 @@ var MessagesComponent = /** @class */ (function () {
             .set('Content-Type', 'application/json');
         var object = { id: this.user_id };
         console.log(this.user_id);
-        this.http.post("/sentMessages", JSON.stringify(object), { headers: headers }).subscribe(function (data) {
+        this.http.post("http://localhost:2000/sentMessages", JSON.stringify(object), { headers: headers }).subscribe(function (data) {
             _this.messages = data["messages"];
             console.log(_this.messages);
         });
@@ -1162,7 +1277,7 @@ var MessagesComponent = /** @class */ (function () {
             .set('Content-Type', 'application/json');
         var object = { id: this.user_id };
         console.log(this.user_id);
-        this.http.post("/recievedMessages", JSON.stringify(object), { headers: headers }).subscribe(function (data) {
+        this.http.post("http://localhost:2000/recievedMessages", JSON.stringify(object), { headers: headers }).subscribe(function (data) {
             _this.messages = data["messages"];
             console.log(_this.messages[0].datetime);
         });
@@ -1225,7 +1340,7 @@ var RequestService = /** @class */ (function () {
             if (tokenid === null) {
                 resolve(true);
             }
-            _this.http.post("/check", JSON.stringify(tokens), { headers: headers }).subscribe(function (data) {
+            _this.http.post("http://localhost:2000/check", JSON.stringify(tokens), { headers: headers }).subscribe(function (data) {
                 resolve(data['error']);
             });
         });
@@ -1325,7 +1440,7 @@ var SearchComponent = /** @class */ (function () {
                 var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]()
                     .set('Authorization', 'my-auth-token')
                     .set('Content-Type', 'application/json');
-                _this.http.post("/getName", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
+                _this.http.post("http://localhost:2000/getName", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
                     _this.name = data["name"];
                     _this.user_id = data["user_id"];
                 });
@@ -1339,7 +1454,7 @@ var SearchComponent = /** @class */ (function () {
             .set('Authorization', 'my-auth-token')
             .set('Content-Type', 'application/json');
         var p = { search: this.request.search };
-        this.http.post("/search", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
+        this.http.post("http://localhost:2000/search", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
             _this.records = data['length'];
             if (_this.records == 0) {
                 alert("No Matching Results");
@@ -1365,7 +1480,7 @@ var SearchComponent = /** @class */ (function () {
                 .set('Content-Type', 'application/json');
             var p = { user_id: this.user_id, product_id: id };
             console.log(p);
-            this.http.post("/wishlist", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
+            this.http.post("http://localhost:2000/wishlist", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
             });
             this.router.navigate(['/wishlist']);
         }
@@ -1391,7 +1506,7 @@ var SearchComponent = /** @class */ (function () {
             .set('Authorization', 'my-auth-token')
             .set('Content-Type', 'application/json');
         var p = { search: this.request.search };
-        this.http.post("/search", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
+        this.http.post("http://localhost:2000/search", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
             _this.listings = data['listings'];
             _this.records = data['length'];
             if (_this.records == 0) {
@@ -1650,7 +1765,7 @@ var SignupComponent = /** @class */ (function () {
                 .set('Content-Type', 'application/json');
             var p = { name: this.name, email: this.email, password: this.password, college: this.college, address: this.address, contactno: this.contactno };
             console.log(JSON.stringify(p));
-            this.http.post("/signup", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
+            this.http.post("http://localhost:2000/signup", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
                 localStorage.setItem('token', data['token']);
                 localStorage.setItem('name', _this.name);
                 _this.request.z = true;
@@ -1738,14 +1853,14 @@ var WishlistComponent = /** @class */ (function () {
             .set('Authorization', 'my-auth-token')
             .set('Content-Type', 'application/json');
         var object = { token: localStorage.getItem("token") };
-        this.http.post("/getName", JSON.stringify(object), { headers: headers }).subscribe(function (data) {
+        this.http.post("http://localhost:2000/getName", JSON.stringify(object), { headers: headers }).subscribe(function (data) {
             _this.user_id = data['user_id'];
             console.log("Id is " + _this.user_id);
             headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]()
                 .set('Authorization', 'my-auth-token')
                 .set('Content-Type', 'application/json');
             var objects = { user_id: _this.user_id };
-            _this.http.post("/getWishlist", JSON.stringify(objects), { headers: headers }).subscribe(function (data) {
+            _this.http.post("http://localhost:2000/getWishlist", JSON.stringify(objects), { headers: headers }).subscribe(function (data) {
                 _this.listings = data['product_id'];
                 for (var i = 0; i < _this.listings.length; i++) {
                     headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]()
@@ -1753,7 +1868,7 @@ var WishlistComponent = /** @class */ (function () {
                         .set('Content-Type', 'application/json');
                     var p = { id: _this.listings[i].product_id };
                     console.log(JSON.stringify(p));
-                    _this.http.post("/getItem", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
+                    _this.http.post("http://localhost:2000/getItem", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
                         console.log(data["item"]);
                         _this.items.push(data['item']);
                     });
@@ -1772,7 +1887,7 @@ var WishlistComponent = /** @class */ (function () {
             .set('Content-Type', 'application/json');
         var p = { user_id: this.user_id, product_id: productid };
         console.log(JSON.stringify(p));
-        this.http.post("/delete", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
+        this.http.post("http://localhost:2000/delete", JSON.stringify(p), { headers: headers }).subscribe(function (data) {
             alert("Item Removed");
             // Redoing same thing;
         });
@@ -1855,7 +1970,7 @@ var YourlistingsComponent = /** @class */ (function () {
             .set('Authorization', 'my-auth-token')
             .set('Content-Type', 'application/json');
         var object = { token: localStorage.getItem("token") };
-        this.http.post("/getName", JSON.stringify(object), { headers: headers }).subscribe(function (data) {
+        this.http.post("http://localhost:2000/getName", JSON.stringify(object), { headers: headers }).subscribe(function (data) {
             console.log(data["name"]);
             _this.name = data["name"];
             console.log(name + "asdad");
@@ -1863,7 +1978,7 @@ var YourlistingsComponent = /** @class */ (function () {
                 .set('Authorization', 'my-auth-token')
                 .set('Content-Type', 'application/json');
             var objects = { name: _this.name };
-            _this.http.post("/getListings", JSON.stringify(objects), { headers: headers }).subscribe(function (data) {
+            _this.http.post("http://localhost:2000/getListings", JSON.stringify(objects), { headers: headers }).subscribe(function (data) {
                 console.log(data["listings"]);
                 _this.listings = data["listings"];
             });
@@ -1876,7 +1991,7 @@ var YourlistingsComponent = /** @class */ (function () {
             .set('Authorization', 'my-auth-token')
             .set('Content-Type', 'application/json');
         var objects = { id: product_id };
-        this.http.post("/removeItem", JSON.stringify(objects), { headers: headers }).subscribe(function (data) {
+        this.http.post("http://localhost:2000/removeItem", JSON.stringify(objects), { headers: headers }).subscribe(function (data) {
             for (var i = 0; i < _this.listings.length; i++) {
                 if ((_this.listings[i].product_id == product_id)) {
                     _this.listings.splice(i, 1);
