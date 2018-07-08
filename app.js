@@ -12,8 +12,8 @@ app.use('/',require('./routes'));
 const connection = mysql.createConnection({
   host: 'localhost',
   database: 'finalproject',
-  user: 'root',
-  password: 'root'
+  user: 'aa',
+  password: 'divyansh2428@'
 });
 
 connection.query(
@@ -51,8 +51,8 @@ connection.query(
                 }
               }
             );
-    
-    
+
+            
         connection.query(
             `create table if not exists items(product_id integer primary key auto_increment,seller varchar(250),name varchar(250),author varchar(250),description varchar(250),price integer,url varchar(250),con varchar(250))`,
               function(err, results, fields) {
@@ -84,4 +84,3 @@ app.listen(2000,function(){
     console.log("Node Server Started");
 })
 
-//Hello
