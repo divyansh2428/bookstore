@@ -29,7 +29,7 @@ connection.query(
     );
 
     connection.query(
-        `create table if not exists users(id integer primary key auto_increment,name varchar(250),email varchar(250),password varchar(250),college varchar(250),address varchar(250),contact_no varchar(250))`,
+        `create table if not exists users(id integer primary key auto_increment,name varchar(250),email varchar(250),password varchar(250),college varchar(250),address varchar(250),contact_no varchar(250),token varchar(250))`,
           function(err, results, fields) {
               if(err)
               console.log(err);
