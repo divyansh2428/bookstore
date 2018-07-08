@@ -12,8 +12,8 @@ app.use('/',require('./routes'));
 const connection = mysql.createConnection({
   host: 'localhost',
   database: 'finalproject',
-  user: 'aa',
-  password: 'divyansh2428@'
+  user: 'root',
+  password: 'root'
 });
 
 connection.query(
