@@ -52,7 +52,7 @@ connection.query(
               }
             );
 
-            
+
         connection.query(
             `create table if not exists items(product_id integer primary key auto_increment,seller varchar(250),name varchar(250),author varchar(250),description varchar(250),price integer,url varchar(250),con varchar(250))`,
               function(err, results, fields) {
@@ -77,7 +77,9 @@ connection.query(
                 );
         
 
-                
+         app.get("*", function(req,res){
+             res.sendfile('./public/index.html') ;
+         })       
 
 
 app.listen(2000,function(){
